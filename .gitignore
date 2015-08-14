@@ -1,1 +1,5 @@
-/AppEmpresaXYZOK/
+*target*
+*.jar
+*.war
+*.ear
+*.class
