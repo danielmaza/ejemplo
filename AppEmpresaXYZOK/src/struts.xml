@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+
+    <package name="ejemplo15" namespace="/" extends="struts-default">
+        <default-action-ref name="Listado_Cliente" />
+        
+        <action name="Listado_Cliente" class="ejemplo15.ClienteAccion" method="listado">
+            <result>/jsp/ListadoCliente.jsp</result>
+        </action>
+        
+        <action name="Agregar_Cliente" class="ejemplo15.ClienteAccion" method="agregar">
+            <result name="input">/jsp/ListadoCliente.jsp</result>
+            <result name="success" type="redirectAction">Listado_Cliente</result>
+        </action>
+        
+        <action name="Editar_Cliente" class="ejemplo15.ClienteAccion" method="editar">
+			<interceptor-ref name="paramsPrepareParamsStack"/>
+            <result name="success">/jsp/EditarCliente.jsp</result>
+        </action>
+        
+        <action name="Modificar_Cliente" class="ejemplo15.ClienteAccion" method="modificar">
+        	<result name="input">/jsp/EditarCliente.jsp</result>
+            <result name="success" type="redirectAction">Listado_Cliente</result>
+        </action>
+        
+        <action name="Eliminar_Cliente" class="ejemplo15.ClienteAccion" method="eliminar">
+            <result name="success" type="redirectAction">Listado_Cliente</result>
+        </action>
+ 
+    </package>
+</struts>
